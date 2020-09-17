@@ -12,7 +12,7 @@ export default class CreateUser extends Component {
         this.setState({
             username: e.target.value,
         });
-    }
+    };
 
     onSubmit = (e) => {
         e.preventDefault();
@@ -22,11 +22,16 @@ export default class CreateUser extends Component {
         };
 
         console.log(user);
+        
+        axios
+            .post("http://localhost:5000/users/add", user)
+            .then((res) => console.log(res.data))
+            .catch((err) => console.log(err));
 
         this.setState({
             username: "",
         });
-    }
+    };
 
     render() {
         return (
